@@ -1,0 +1,37 @@
+2015-10-03 19:57:39,644 - [INFO] - from play in play-internal-execution-context-1 
+datasource [postgres://hknogpmacvesfn:xOZhzF8Le_nf60ARxHg4MNkdVu@ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory] bound to JNDI as DefaultDS
+
+2015-10-03 19:57:39,656 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+JDBC URL = jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory, Username = hknogpmacvesfn, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
+
+2015-10-03 19:57:46,520 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+
+2015-10-03 19:59:46,793 - [DEBUG] - from com.jolbox.bonecp.StatementHandle in play-internal-execution-context-1 
+select relname from pg_class where relkind='S'
+
+2015-10-03 19:59:50,601 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2015-10-03 19:59:52,177 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select t0.id as c0, t0.user_profile_id as c1, t0.access_token as c2, t0.creation_date as c3, t0.device_id as c4 from token t0 where access_token = '499dd593-9823-4318-acba-aee72c927524' 
+
+2015-10-03 19:59:52,457 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5 from userprofile t0 where t0.id = 1181 
+
+2015-10-03 19:59:52,789 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5 from userprofile t0 where t0.id = 1241 
+
+2015-10-03 19:59:53,165 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select nextval('message_id_sequence'), s.generate_series from (select generate_series from generate_series(1,20) ) as s
+
+2015-10-03 19:59:53,285 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+insert into message (id, author_id, author_name, create_time, localisation_longitude, localisation_latitude, text) values (4481,'1241','sonialatina',2015-10-03 19:59:53.161,2.390966,48.870582,'mon texte depuis la maison')
+
+2015-10-03 19:59:53,689 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select t0.id as c0, t0.registration_id as c1, t0.create_time as c2, t0.device_id as c3, t0.support_type as c4 from registration t0
+
+2015-10-03 19:59:53,909 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select t0.id as c0, t0.user_profile_id as c1, t0.access_token as c2, t0.creation_date as c3, t0.device_id as c4 from token t0 where user_profile_id = 1241  order by creation_date 
+limit 2
+

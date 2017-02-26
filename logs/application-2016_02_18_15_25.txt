@@ -1,0 +1,27 @@
+2016-02-18 15:25:00,914 - [INFO] - from play in play-internal-execution-context-1 
+datasource [postgres://hknogpmacvesfn:xOZhzF8Le_nf60ARxHg4MNkdVu@ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory] bound to JNDI as DefaultDS
+
+2016-02-18 15:25:00,918 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+JDBC URL = jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory, Username = hknogpmacvesfn, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
+
+2016-02-18 15:25:06,576 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+
+2016-02-18 15:26:06,743 - [DEBUG] - from com.jolbox.bonecp.StatementHandle in play-internal-execution-context-1 
+select relname from pg_class where relkind='S'
+
+2016-02-18 15:26:09,119 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2016-02-18 15:27:48,504 - [INFO] - from com.jolbox.bonecp.BoneCP in play-internal-execution-context-1 
+Shutting down connection pool...
+
+2016-02-18 15:27:48,505 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
+Terminating pool watch thread
+
+2016-02-18 15:27:48,590 - [INFO] - from com.jolbox.bonecp.BoneCP in play-internal-execution-context-1 
+Connection pool has been shutdown.
+
+2016-02-18 15:27:48,590 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+Connection pool has been shut down
+

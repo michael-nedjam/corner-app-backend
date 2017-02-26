@@ -1,0 +1,1 @@
+CREATE TABLE Messages (author_name varchar(50), create_time timestamp , longitude NUMERIC(20, 10), latitude NUMERIC(20, 10), text varchar(255));

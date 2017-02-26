@@ -1,0 +1,138 @@
+2016-02-17 16:01:14,518 - [INFO] - from play in play-internal-execution-context-1 
+datasource [postgres://hknogpmacvesfn:xOZhzF8Le_nf60ARxHg4MNkdVu@ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory] bound to JNDI as DefaultDS
+
+2016-02-17 16:01:14,520 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+JDBC URL = jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory, Username = hknogpmacvesfn, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
+
+2016-02-17 16:01:19,747 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+
+2016-02-17 16:02:16,188 - [DEBUG] - from com.jolbox.bonecp.StatementHandle in play-internal-execution-context-1 
+select relname from pg_class where relkind='S'
+
+2016-02-17 16:02:18,355 - [DEBUG] - from com.jolbox.bonecp.StatementHandle in play-internal-execution-context-1 
+
+    alter table Message 
+        add column nb_times_reported int4 not null
+
+2016-02-17 16:02:18,457 - [DEBUG] - from com.jolbox.bonecp.StatementHandle in play-internal-execution-context-1 
+
+    alter table Userprofile 
+        add column show_offensive_content boolean
+
+2016-02-17 16:02:18,752 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2016-02-17 16:02:19,436 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
+select nextval('userprofile_id_sequence'), s.generate_series from (select generate_series from generate_series(1,20) ) as s
+
+2016-02-17 16:02:19,538 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
+insert into userprofile (id, email, first_name, last_name, passwordHashed, creation_date, show_offensive_content) values (1781,'test+c821c820-7d9d-c9b2-f90a-de979e9397fd@email.com','c821c820-7d9d-c9b2-f90a-de979e9397fd','nom','1000:01fd4f8195e81360d8b6299f19024085631c0ea7adb301cc:ad771069f754f44c1a50a8fdd8ff35b35a497e586440c690',2016-02-17 16:02:19.415,false)
+
+2016-02-17 16:06:56,232 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+select t0.id as c0, t0.user_profile_id as c1, t0.access_token as c2, t0.creation_date as c3, t0.device_id as c4 from token t0 where access_token = '499dd593-9823-4318-acba-aee72c927524' 
+
+2016-02-17 16:06:56,443 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5, t0.show_offensive_content as c6 from userprofile t0 where t0.id = 1181 
+
+2016-02-17 16:06:56,633 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5, t0.show_offensive_content as c6 from userprofile t0 where t0.id = 1241 
+
+2016-02-17 16:06:56,817 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+select nextval('message_id_sequence'), s.generate_series from (select generate_series from generate_series(1,20) ) as s
+
+2016-02-17 16:06:56,909 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+insert into message (id, author_id, author_name, create_time, localisation_longitude, localisation_latitude, text, nb_times_reported) values (5201,'1241','sonialatina',2016-02-17 16:06:56.816,2.390966,48.8706668,'mon texte depuis la maison',0)
+
+2016-02-17 16:06:57,100 - [ERROR] - from play in play-internal-execution-context-1 
+Cannot invoke the action, eventually got an error: javax.persistence.PersistenceException: ERROR executing DML bindLog[] error[ERROR: column "nb_times_reported" of relation "message" does not exist\n   Position : 116]
+
+2016-02-17 16:06:57,129 - [ERROR] - from application in play-internal-execution-context-1 
+
+
+! @6p697jmm4 - Internal server error, for (POST) [/messages] ->
+
+play.api.Application$$anon$1: Execution exception[[PersistenceException: ERROR executing DML bindLog[] error[ERROR: column "nb_times_reported" of relation "message" does not exist\n   Position : 116]]]
+	at play.api.Application$class.handleError(Application.scala:293) ~[play_2.10.jar:2.2.2]
+	at play.api.DefaultApplication.handleError(Application.scala:399) [play_2.10.jar:2.2.2]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$2$$anonfun$applyOrElse$3.apply(PlayDefaultUpstreamHandler.scala:261) [play_2.10.jar:2.2.2]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$2$$anonfun$applyOrElse$3.apply(PlayDefaultUpstreamHandler.scala:261) [play_2.10.jar:2.2.2]
+	at scala.Option.map(Option.scala:145) [scala-library.jar:na]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$2.applyOrElse(PlayDefaultUpstreamHandler.scala:261) [play_2.10.jar:2.2.2]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$2.applyOrElse(PlayDefaultUpstreamHandler.scala:257) [play_2.10.jar:2.2.2]
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:344) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:343) [scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at play.api.libs.iteratee.Execution$$anon$1.execute(Execution.scala:43) [play-iteratees_2.10.jar:2.2.2]
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:40) [scala-library.jar:na]
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:248) [scala-library.jar:na]
+	at scala.concurrent.Promise$class.complete(Promise.scala:55) [scala-library.jar:na]
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:153) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) [scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library.jar:na]
+Caused by: javax.persistence.PersistenceException: ERROR executing DML bindLog[] error[ERROR: column "nb_times_reported" of relation "message" does not exist\n   Position : 116]
+	at com.avaje.ebeaninternal.server.persist.dml.DmlBeanPersister.execute(DmlBeanPersister.java:97) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.persist.dml.DmlBeanPersister.insert(DmlBeanPersister.java:57) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.persist.DefaultPersistExecute.executeInsertBean(DefaultPersistExecute.java:66) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.core.PersistRequestBean.executeNow(PersistRequestBean.java:448) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.core.PersistRequestBean.executeOrQueue(PersistRequestBean.java:478) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.persist.DefaultPersister.insert(DefaultPersister.java:335) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.persist.DefaultPersister.saveEnhanced(DefaultPersister.java:310) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.persist.DefaultPersister.saveRecurse(DefaultPersister.java:280) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.persist.DefaultPersister.save(DefaultPersister.java:248) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.core.DefaultServer.save(DefaultServer.java:1568) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.core.DefaultServer.save(DefaultServer.java:1558) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebean.Ebean.save(Ebean.java:453) ~[avaje-ebeanorm.jar:na]
+	at play.db.ebean.Model.save(Model.java:91) ~[play-java-ebean_2.10.jar:2.2.2]
+	at core.messages.MessageDAOImpl.Add(MessageDAOImpl.java:25) ~[na:na]
+	at core.messages.MessagesService.CreateMessage(MessagesService.java:26) ~[na:na]
+	at controllers.MessagesController.post(MessagesController.java:56) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$6$$anonfun$apply$6.apply(routes_routing.scala:125) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$6$$anonfun$apply$6.apply(routes_routing.scala:125) ~[na:na]
+	at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183) ~[play_2.10.jar:2.2.2]
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:377) ~[play_2.10.jar:2.2.2]
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56) ~[play_2.10.jar:2.2.2]
+	at play.mvc.Security$AuthenticatedAction.call(Security.java:45) ~[play_2.10.jar:2.2.2]
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91) ~[play_2.10.jar:2.2.2]
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90) ~[play_2.10.jar:2.2.2]
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82) ~[play_2.10.jar:2.2.2]
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82) ~[play_2.10.jar:2.2.2]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37) ~[play_2.10.jar:2.2.2]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42) ~[akka-actor_2.10.jar:2.2.0]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386) ~[akka-actor_2.10.jar:2.2.0]
+	... 4 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: column "nb_times_reported" of relation "message" does not exist
+  Position : 116
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2103) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1836) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:257) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:512) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:388) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeUpdate(AbstractJdbc2Statement.java:334) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at com.jolbox.bonecp.PreparedStatementHandle.executeUpdate(PreparedStatementHandle.java:205) ~[bonecp.jar:na]
+	at com.avaje.ebeaninternal.server.type.DataBind.executeUpdate(DataBind.java:55) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.persist.dml.InsertHandler.execute(InsertHandler.java:134) ~[avaje-ebeanorm.jar:na]
+	at com.avaje.ebeaninternal.server.persist.dml.DmlBeanPersister.execute(DmlBeanPersister.java:86) ~[avaje-ebeanorm.jar:na]
+	... 35 common frames omitted
+
+2016-02-17 16:17:26,555 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-4 
+Shutting down connection pool...
+
+2016-02-17 16:17:26,555 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
+Terminating pool watch thread
+
+2016-02-17 16:17:26,618 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-4 
+Connection pool has been shutdown.
+
+2016-02-17 16:17:26,618 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in pool-4-thread-4 
+Connection pool has been shut down
+

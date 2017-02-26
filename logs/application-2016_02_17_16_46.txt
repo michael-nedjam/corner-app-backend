@@ -1,0 +1,36 @@
+2016-02-17 16:46:45,783 - [INFO] - from play in play-internal-execution-context-1 
+datasource [postgres://hknogpmacvesfn:xOZhzF8Le_nf60ARxHg4MNkdVu@ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory] bound to JNDI as DefaultDS
+
+2016-02-17 16:46:45,788 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+JDBC URL = jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory, Username = hknogpmacvesfn, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
+
+2016-02-17 16:46:50,773 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+
+2016-02-17 16:47:47,235 - [DEBUG] - from com.jolbox.bonecp.StatementHandle in play-internal-execution-context-1 
+select relname from pg_class where relkind='S'
+
+2016-02-17 16:47:49,525 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2016-02-17 16:47:50,023 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select t0.id as c0, t0.user_profile_id as c1, t0.access_token as c2, t0.creation_date as c3, t0.device_id as c4 from token t0 where access_token = '499dd593-9823-4318-acba-aee72c927524' 
+
+2016-02-17 16:47:50,213 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5, t0.show_offensive_content as c6 from userprofile t0 where t0.id = 1181 
+
+2016-02-17 16:47:50,420 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+select t0.id as c0, t0.author_id as c1, t0.author_name as c2, t0.create_time as c3, t0.localisation_longitude as c4, t0.localisation_latitude as c5, t0.text as c6, t0.nb_times_reported as c7 from message t0 where localisation_longitude between  2.339053041431805 and 2.366420958568195  and localisation_latitude between  48.8654669099991 and 48.883467090000906  order by create_time desc
+
+2016-02-17 18:55:34,522 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-6 
+Shutting down connection pool...
+
+2016-02-17 18:55:34,554 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
+Terminating pool watch thread
+
+2016-02-17 18:55:34,804 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-6 
+Connection pool has been shutdown.
+
+2016-02-17 18:55:34,804 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in pool-4-thread-6 
+Connection pool has been shut down
+

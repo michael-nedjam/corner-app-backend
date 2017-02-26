@@ -1,0 +1,49 @@
+2015-10-03 19:50:52,857 - [INFO] - from play in play-internal-execution-context-1 
+datasource [postgres://hknogpmacvesfn:xOZhzF8Le_nf60ARxHg4MNkdVu@ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory] bound to JNDI as DefaultDS
+
+2015-10-03 19:50:52,877 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+JDBC URL = jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory, Username = hknogpmacvesfn, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
+
+2015-10-03 19:51:00,401 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+
+2015-10-03 19:53:01,422 - [DEBUG] - from com.jolbox.bonecp.StatementHandle in play-internal-execution-context-1 
+select relname from pg_class where relkind='S'
+
+2015-10-03 19:53:05,618 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2015-10-03 19:53:07,538 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-5 
+select t0.id as c0, t0.user_profile_id as c1, t0.access_token as c2, t0.creation_date as c3, t0.device_id as c4 from token t0 where access_token = '499dd593-9823-4318-acba-aee72c927524' 
+
+2015-10-03 19:53:07,958 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-5 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5 from userprofile t0 where t0.id = 1181 
+
+2015-10-03 19:53:08,310 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-5 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5 from userprofile t0 where t0.id = 1241 
+
+2015-10-03 19:53:08,522 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-5 
+select nextval('message_id_sequence'), s.generate_series from (select generate_series from generate_series(1,20) ) as s
+
+2015-10-03 19:53:08,658 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-5 
+insert into message (id, author_id, author_name, create_time, localisation_longitude, localisation_latitude, text) values (4461,'1241','sonialatina',2015-10-03 19:53:08.514,2.390966,48.870582,'mon texte depuis la maison')
+
+2015-10-03 19:53:09,090 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-5 
+select t0.id as c0, t0.registration_id as c1, t0.create_time as c2, t0.device_id as c3, t0.support_type as c4 from registration t0
+
+2015-10-03 19:53:09,394 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-5 
+select t0.id as c0, t0.user_profile_id as c1, t0.access_token as c2, t0.creation_date as c3, t0.device_id as c4 from token t0 where user_profile_id = 1241  order by creation_date 
+limit 2
+
+2015-10-03 19:56:59,500 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-96-thread-1 
+Shutting down connection pool...
+
+2015-10-03 19:56:59,504 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
+Terminating pool watch thread
+
+2015-10-03 19:56:59,512 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-96-thread-1 
+Connection pool has been shutdown.
+
+2015-10-03 19:56:59,512 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in pool-96-thread-1 
+Connection pool has been shut down
+

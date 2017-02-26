@@ -1,0 +1,36 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+
+# User
+GET     /users                           controllers.UsersController.get()
+POST  /users                           controllers.UsersController.post()
+PUT  /users                           controllers.UsersController.put()
+
+# Messages
+GET     /messages/list                           controllers.MessagesController.list()
+POST  /messages                           controllers.MessagesController.post()
+POST  /messages/:id/reportOffensiveContent                           controllers.MessagesController.reportOffensiveContent(id: Long)
+
+
+# Access
+POST  /access                           controllers.AccessController.post()
+
+# CrashReport
+POST  /crashreport                           controllers.CrashreportController.post()
+
+# Test
+GET  /test/notify                           controllers.TestController.sendNotification()
+
+# device
+POST  /notification/registration                           controllers.NotificationController.addRegistration()
+
+# Activity
+POST /activity                           controllers.ActivityController.post()

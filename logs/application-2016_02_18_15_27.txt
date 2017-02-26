@@ -1,0 +1,51 @@
+2016-02-18 15:27:48,724 - [INFO] - from play in play-internal-execution-context-1 
+datasource [postgres://hknogpmacvesfn:xOZhzF8Le_nf60ARxHg4MNkdVu@ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory] bound to JNDI as DefaultDS
+
+2016-02-18 15:27:48,726 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+JDBC URL = jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory, Username = hknogpmacvesfn, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
+
+2016-02-18 15:27:53,445 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:postgresql://ec2-107-22-163-140.compute-1.amazonaws.com:5432/da6ada2d76n2he?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+
+2016-02-18 15:28:51,415 - [DEBUG] - from com.jolbox.bonecp.StatementHandle in play-internal-execution-context-1 
+select relname from pg_class where relkind='S'
+
+2016-02-18 15:28:53,692 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2016-02-18 15:28:53,809 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+select t0.id as c0, t0.user_profile_id as c1, t0.access_token as c2, t0.creation_date as c3, t0.device_id as c4 from token t0 where access_token = '499dd593-9823-4318-acba-aee72c927524' 
+
+2016-02-18 15:28:54,005 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5, t0.show_offensive_content as c6 from userprofile t0 where t0.id = 1181 
+
+2016-02-18 15:28:54,253 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5, t0.show_offensive_content as c6 from userprofile t0 where t0.id = 1181 
+
+2016-02-18 15:28:54,442 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-4 
+update userprofile set show_offensive_content=true where id=1181 and email='michael.nedjam@gmail.com' and first_name='michael' and last_name is null and passwordHashed='1000:1dbe316e34085e67d73dd64f954590383e81a29681b708e4:654a49ca862a74b989c2d6ca9417259f11bf0a9cbde7326e' and creation_date=2015-02-12 17:21:16.833 and show_offensive_content=false
+
+2016-02-18 15:29:08,788 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-10 
+select t0.id as c0, t0.user_profile_id as c1, t0.access_token as c2, t0.creation_date as c3, t0.device_id as c4 from token t0 where access_token = '499dd593-9823-4318-acba-aee72c927524' 
+
+2016-02-18 15:29:08,991 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-10 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5, t0.show_offensive_content as c6 from userprofile t0 where t0.id = 1181 
+
+2016-02-18 15:29:09,175 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-10 
+select t0.id as c0, t0.email as c1, t0.first_name as c2, t0.last_name as c3, t0.passwordHashed as c4, t0.creation_date as c5, t0.show_offensive_content as c6 from userprofile t0 where t0.id = 1181 
+
+2016-02-18 15:29:09,370 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-10 
+update userprofile set show_offensive_content=false where id=1181 and email='michael.nedjam@gmail.com' and first_name='michael' and last_name is null and passwordHashed='1000:1dbe316e34085e67d73dd64f954590383e81a29681b708e4:654a49ca862a74b989c2d6ca9417259f11bf0a9cbde7326e' and creation_date=2015-02-12 17:21:16.833 and show_offensive_content=true
+
+2016-02-18 15:59:54,416 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-5 
+Shutting down connection pool...
+
+2016-02-18 15:59:54,419 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
+Terminating pool watch thread
+
+2016-02-18 15:59:54,427 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-5 
+Connection pool has been shutdown.
+
+2016-02-18 15:59:54,428 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in pool-4-thread-5 
+Connection pool has been shut down
+
